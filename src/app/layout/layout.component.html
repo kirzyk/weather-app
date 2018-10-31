@@ -1,0 +1,56 @@
+<div class="container-fluid text-center">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="jumbotron">
+        <h2>Weather application</h2>
+        <legend>Check weather in your city!</legend>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="bs-component">
+        <ul class="nav nav-tabs">
+          <li class="nav-item">
+            <a class="nav-link active show" data-toggle="tab">current</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link show" data-toggle="tab">5 days</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link show" data-toggle="tab">16 days</a>
+          </li>
+        </ul>
+        <form>
+          <fieldset>
+            <div class="form-group row">
+              <div class="col-lg-12">
+                <input type="text" class="form-control text-center" (keyup.enter)="search()"
+                       [formControl]="formGroup.get('city')" placeholder="Insert location...">
+              </div>
+            </div>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+  </div>
+  <ng-container *ngFor="let item of weatherList">
+    <div class="card bg-secondary mb-3">
+      <div class="card-header">
+        <span>
+          {{item.weather.city}}
+          <i style="float: right; cursor: pointer" class="fa fa-times" role="button" (click)="removeCity(item.id)"></i>
+        </span>
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">
+          <p>Temperature: {{item.weather.temperature}}</p>
+          <p>Humidity: {{item.weather.humidity}}</p>
+          <p>Pressure: {{item.weather.pressure}}</p>
+          <p>Wind speed: {{item.weather.wind}}</p>
+          <p>Clouds: {{item.weather.clouds}}</p>
+        </h5>
+      </div>
+    </div>
+  </ng-container>
+</div>
